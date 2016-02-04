@@ -5,7 +5,7 @@
 	for (i=1; i<= NF; i++)
 	{
 		count[$i]++
-		index1[$i] = index1[$i] NR "-"   #concatenate lines
+		index1[$i] = index1[$i] NR ", "   #concatenate lines
 	}
 }	
 
@@ -13,12 +13,9 @@ END {
 	print "\n===List of words occurring 50 times in " FILENAME " ===\n"
 	for (word in count){
 		if (count[word] == 50) {
-#			output=word " (" count[word] " occurrences) see lines: "
-#			output = output index1[word] "\n"
-#			print output #| "sort -d" (Can't figure out how to sort without also sorting /n)
-			split(index1[word], arr1, "-",seps)
-			for(i in arr1) {print arr[i]}
-
+			output=word " (" count[word] " occurrences) see lines: "
+			output = output index1[word] "\n"
+			print output #| "sort -d" (Can't figure out how to sort without also sorting /n)
 		}
 	}
 }
